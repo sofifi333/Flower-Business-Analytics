@@ -10,6 +10,24 @@ public:
         void print();
 
         string getFullName() const;
+        string getFirstName() const;
+        string getLastName() const;
+        string getAddress() const;
+        string getCity() const;
+        string getState() const;
+        string getPhoneNumber() const;
+        string getZipCode() const;
+        string getAccountNumber() const;
+
+
+        void setFirstName(string);
+        void setLastName(string);
+        void setAddress(string);
+        void setCity(string);
+        void setState(string);
+        void setPhoneNumber(string);
+        void setZipCode(string);
+        void setAccountNumber(string);
 
 private:
 //use std:: to reference string since you are not using using namespace std;

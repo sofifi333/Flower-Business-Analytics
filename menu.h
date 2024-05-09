@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "customer.h"
+#include "purchase.h"
 
 class Menu { //manages all menu functionalities
 public: 
@@ -16,8 +17,15 @@ public:
     void printAscendingList();
     void printCustomerInfo();
     void printCustomerTotal();
-    double totalSpent();
+    void addNewCustomer();
+    void addNewCustomers();
+    void updateCustomerInfo();
+    void deleteCustomerInfo();
+    void addNewPurchase();
+    void addNewPurchases();
+
 private:
+    std::vector<Purchase *> purchases;
     std::vector<Customer *> customers;
 };
 
