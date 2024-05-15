@@ -6,58 +6,78 @@
 #include <cstdlib>
 #include <ctime>
 #include <iomanip>
-using namespace std;
+
+
 
 void Menu::printMenu()
 {
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-    cout << "|\t\t\t\t\t\tMENU\t\t\t\t\t\t|\n";
-    cout << "|\t\t\t\t\t____________________\t\t\t\t\t|\n"
-         << "|\t\t\t\t\t\t\t\t\t\t\t\t|" << endl;
-    cout << "|\t\tWelcome to Blossom Botique! Your one-stop shop for all your floral needs.\t|\n"
-         << "|\t\t\t\t\t\t\t\t\t\t\t\t|" << endl;
-    cout << "|\t\tPlease Select a Number corresponding with one of the following options:\t\t|\n"
-         << "|\t\t\t\t\t\t\t\t\t\t\t\t|" << endl;
-    cout << "|   \t            1. Print menu" << "\t\t\t\t\t\t\t\t|" <<endl;
-    cout << "|   \t            2. Print all Customers"
-         << "\t\t\t\t\t\t\t|" << endl;
-    cout << "|   \t	    3. Print Customer list in DESCENDING order\t\t\t\t\t|\n";
-    cout << "|   \t	    4. Print Customer list in ASCENDING order\t\t\t\t\t|\n";
-    cout << "|   \t	    5. Print a Customer's account information\t\t\t\t\t|\n";
+     std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+     std::cout << "|\t\t\t\t\t\tMENU\t\t\t\t\t\t|\n";
+     std::cout << "|\t\t\t\t\t____________________\t\t\t\t\t|\n"
+         << "|\t\t\t\t\t\t\t\t\t\t\t\t|" <<  std::endl;
+     std::cout << "\033[31m"; // Set color to green
+     cout << "";
+     std::cout << R"(             __
+        _   /  |                    
+       | \  \/_/                    
+       \_\| / __                     
+          \/_/__\           )";
+     std::cout << R"( .--='/~\
+   ____,__/__,_____,______)/   /{~}}}
+   -,-----,--\--,-----,---,\'-' {{~}}
+)";
+      std::cout << R"(        __/\_            '--=.\}/
+          /_/ |\\
+               \/
+)" << "\033[0m" <<   std::endl;
+     std::cout << "|\t\tWelcome to Blossom Botique! Your one-stop shop for all your floral needs.\t|\n"
+         << "|\t\t\t\t\t\t\t\t\t\t\t\t|" <<  std::endl;
+     std::cout << "|\t\tPlease Select a Number corresponding with one of the following options:\t\t|\n"
+         << "|\t\t\t\t\t\t\t\t\t\t\t\t|" <<  std::endl;
+    
+     std::cout << "|   \t            1. Print menu" << "\t\t\t\t\t\t\t\t|" << std::endl;
+     std::cout << "|   \t            2. Print all Customers"
+         << "\t\t\t\t\t\t\t|" <<  std::endl;
+     std::cout << "|   \t	    3. Print Customer list in DESCENDING order\t\t\t\t\t|\n";
+     std::cout << "|   \t	    4. Print Customer list in ASCENDING order\t\t\t\t\t|\n";
+     std::cout << "|   \t	    5. Print a Customer's account information\t\t\t\t\t|\n";
 
-    cout << "|   \t	    6. Print total spent for a select Customer\t\t\t\t\t|\n";
-    cout << "|   \t	    7. Add new Customer\t\t\t\t\t\t\t\t|\n";
-    cout << "|   \t	    8. Add multiple Customers\t\t\t\t\t\t\t|\n";
-    cout << "|   \t	    9. Update select Customer's information\t\t\t\t\t|\n";
+     std::cout << "|   \t	    6. Print total spent for a select Customer\t\t\t\t\t|\n";
+     std::cout << "|   \t	    7. Add new Customer\t\t\t\t\t\t\t\t|\n";
+     std::cout << "|   \t	    8. Add multiple Customers\t\t\t\t\t\t\t|\n";
+     std::cout << "|   \t	    9. Update select Customer's information\t\t\t\t\t|\n";
 
-    cout << "|   \t	   10. Delete select Customer's account information\t\t\t\t|\n";
-    cout << "|   \t	   11. Add new Customer's purchase\t\t\t\t\t\t|\n";
-    cout << "|   \t	   12. Add multiple new Customer purchases\t\t\t\t\t|\n";
-    cout << "|   \t	   13. Save new data\t\t\t\t\t\t\t\t|\n"; //create outfile, overwrite what you wrote cout (to outfile) make sure to call the function --use the same file you wrote in 
-    cout << "|   \t	   14. Export to new file\t\t\t\t\t\t\t|\n"; //create outfile, exporting to secondary file--make sure to do both files(must do it twice) (make function do both to both files, from within output function you want it to print it)
-    cout << "|   \t	   15. exit\t\t\t\t\t\t\t\t\t|\n" //create outfile, exporting to secondary file--make sure to do both files(must do it twice) (make function do both to both files, from within output function you want it to print it)
-         << "|\t\t\t\t\t\t\t\t\t\t\t\t|" << endl;
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+     std::cout << "|   \t	   10. Delete select Customer's account information\t\t\t\t|\n";
+     std::cout << "|   \t	   11. Add new Customer's purchase\t\t\t\t\t\t|\n";
+     std::cout << "|   \t	   12. Add multiple new Customer purchases\t\t\t\t\t|\n";
+     std::cout << "|   \t	   13. Save new data\t\t\t\t\t\t\t\t|\n"; //create outfile, overwrite what you wrote  std::cout (to outfile) make sure to call the function --use the same file you wrote in 
+     std::cout << "|   \t	   14. Export to new file\t\t\t\t\t\t\t|\n"; //create outfile, exporting to secondary file--make sure to do both files(must do it twice) (make function do both to both files, from within output function you want it to print it)
+     std::cout << "|   \t	   15. exit\t\t\t\t\t\t\t\t\t|\n" //create outfile, exporting to secondary file--make sure to do both files(must do it twice) (make function do both to both files, from within output function you want it to print it)
+         << "|\t\t\t\t\t\t\t\t\t\t\t\t|" <<  std::endl;
+     std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" <<  std::endl;
 }
 
 void Menu::run()
 {
-    string option;
+     std::string option;
     printMenu();
 
     while (1 + 1 == 2)
     {
         if (option != "") {
-            cout << "Would you like to print the menu? (Y/n): ";
-            getline(cin, option);
-            if (option == "Y") {
+RUN_AGAIN:
+             std::cout << "Would you like to print the menu? (Y/n): ";
+             std::getline(cin, option);
+            if (option == "Y" || option == "y" ) {
                 printMenu();
+            } else if (option != "N" && option != "n") {
+                goto RUN_AGAIN;
             }
         }
     LABEL:
-        cout << "main menu> ";
+         std::cout << "main menu> ";
         cin.clear(); //
-        getline(cin, option);
+         std::getline(cin, option);
 
         // try catch ->used for errors...trying to make input a # .. if user doesn't enter a # catch the error
         // other approach is to use while loop/if stmts
@@ -67,10 +87,10 @@ void Menu::run()
 
             execute(option_int);
         }
-        catch (std::exception e)
+        catch ( exception e)
         {
-            cout << "Please enter a number! " << endl;
-            goto LABEL; // loops again from cout << main menu
+             std::cout << "Please enter a number! " <<  std::endl;
+            goto LABEL; // loops again from  std::cout << main menu
         }
     }
 }
@@ -78,16 +98,16 @@ void Menu::run()
 // constructor to read file1 automatically:
 Menu::Menu()
 {
-    string line, temp, data[8]; // string that can be 8 chars/array
-    ifstream inFile("customerData.txt");
-    // dont forget to ofstream in another file
+     std::string line, temp, data[8]; //  std::string that can be 8 chars/array
+     std::ifstream inFile("customerData.txt");
+    // dont forget to  std::ofstream in another file
     if (!inFile.is_open())
     {
-        cout << "ERROR: File does NOT open " << endl;
+         std::cout << "ERROR: File does NOT open " <<  std::endl;
         return;
     }
 
-    while (getline(inFile, line))
+    while ( std::getline(inFile, line))
     {
         // loop through each character line by line and save it in each variable
         int i = 0;
@@ -113,11 +133,11 @@ Menu::Menu()
 
     if (!inFile.is_open())
     {
-        cout << "ERROR: File does NOT open " << endl;
+         std::cout << "ERROR: File does NOT open " <<  std::endl;
         return;
     }
 
-    while (getline(inFile, line))
+    while ( std::getline(inFile, line))
     {
         int i = 0;
         for (auto c : line)
@@ -143,31 +163,31 @@ Menu::Menu()
 
 void Menu::printCustomers()
 { // print list of all customers --calls print for every index of vector
-    cout << left << setw(12) << "First Name" << left << setw(13) << "Last Name" << left << setw(15) << "Account Num" << left << setw(22) << "Address" << left << setw(20) << "City" <<  left <<setw(14) << "State" << left << setw(15) << "Zip Code" << left << setw(12) << "Phone Num" << endl;
-    cout << setfill ('-') << setw (123) << ""<< endl << setfill(' ');
+     std::cout <<  std::left <<  std::setw(12) << "First Name" <<  std::left <<  std::setw(13) << "Last Name" <<  std::left <<  std::setw(15) << "Account Num" <<  std::left <<  std::setw(22) << "Address" <<  std::left <<  std::setw(20) << "City" <<   std::left << std::setw(14) << "State" <<  std::left <<  std::setw(15) << "Zip Code" <<  std::left <<  std::setw(12) << "Phone Num" <<  std::endl;
+     std::cout << setfill ('-') <<  std::setw (123) << ""<<  std::endl << setfill(' ');
     for (Customer *customer : customers)
     { // for each customer IN customers -> for each loop ..for every index in customers u make ptr var/object customer that accesses anything within the index--every index is ptr to object(can access vars, methods, anything w -> syntax)
         customer->print();
-        cout << "\n\t";
-        cout << "Purchases for: " << customer->getFullName() << endl;
-        cout << "\t";
-        cout << left << setw(16) << "Account Num" << left << setw(13) << "Item" << left << setw(15) << "Date" << left << setw(22) << "Amount" << endl;
-        cout << "\t";
-        cout << setfill ('-') << setw(66) << ""<< endl << setfill(' ');
+         std::cout << "\n\t";
+         std::cout << "Purchases for: " << customer->getFullName() <<  std::endl;
+         std::cout << "\t";
+         std::cout <<  std::left <<  std::setw(16) << "Account Num" <<  std::left <<  std::setw(13) << "Item" <<  std::left <<  std::setw(15) << "Date" <<  std::left <<  std::setw(22) << "Amount" <<  std::endl;
+         std::cout << "\t";
+         std::cout << setfill ('-') <<  std::setw(66) << ""<<  std::endl << setfill(' ');
         printPurchases(customer->getAccountNumber());
-        cout << "\n\n";
+         std::cout << "\n\n";
     }
 } // PRINT ALL PURCHASE INFORMATION IN COLUMN FORMAT HERE: 
 /*
-idea: change the initial cout statement: add a header for purchase: << purchase item << date << 
+idea: change the initial  std::cout statement: add a header for purchase: << purchase item << date << 
  use a purchase.cpp function called printPurchase() that will get each purchase for each customer, and print it 
 use this within the for loop somehow
 */
 
-void Menu::printPurchases(string accountNumber) {
+void Menu::printPurchases( std::string accountNumber) {
     for(auto* purchase : purchases) {
         if (purchase->getAccountNumber() == accountNumber) {
-            cout << "\t";
+             std::cout << "\t";
             purchase->print();
         }
     }
@@ -191,18 +211,18 @@ void Menu::printAscendingList()
 void Menu::printCustomerInfo()
 { // select a customer and print all info
     int i = 1;
-    string number;
+     std::string number;
     // for a customer in customers
     for (auto *customer : customers)
     {
-        cout << i << ") " << customer->getFullName() << endl; // customer->getFullName ..ptr customer is getting the fullName
+         std::cout << i << ") " << customer->getFullName() <<  std::endl; // customer->getFullName ..ptr customer is getting the fullName
         i++;
     }
 CUSTOMERINFO_LABEL: // jumps back here
-    cout << "customer info> ";
+     std::cout << "customer info> ";
 
     cin.clear();
-    getline(cin, number);
+     std::getline(cin, number);
 
     try
     {
@@ -210,15 +230,15 @@ CUSTOMERINFO_LABEL: // jumps back here
 
         if (number_int > customers.size())
         { // if number is out of range
-            cout << "Customer is not found!" << endl;
+             std::cout << "Customer is not found!" <<  std::endl;
             goto CUSTOMERINFO_LABEL;
         }
 
         customers[number_int - 1]->print(); // prints actual values at # user inputted vector stores at index 0, so use-1.
     }
-    catch (std::exception e)
+    catch ( exception e)
     { // exception e-- stores the error. if there was an error with try, automatically goes to catch
-        cout << "Please enter a number! " << endl;
+         std::cout << "Please enter a number! " <<  std::endl;
         goto CUSTOMERINFO_LABEL;
     }
 }
@@ -226,18 +246,18 @@ CUSTOMERINFO_LABEL: // jumps back here
 void Menu::printCustomerTotal()
 { // select a customer and print out total for all their purchases
     int i = 1;
-    string number;
+     std::string number;
     // for a customer in customers
     for (auto *customer : customers)
     {
-        cout << i << ") " << customer->getFullName() << endl; // customer->getFullName ..ptr customer is getting the fullName
+         std::cout << i << ") " << customer->getFullName() <<  std::endl; // customer->getFullName ..ptr customer is getting the fullName
         i++;
     }
 PURCHASE_LABEL: // jumps back here
-    cout << "purchase info> ";
+     std::cout << "purchase info> ";
 
     cin.clear();
-    getline(cin, number);
+     std::getline(cin, number);
 
     try
     {
@@ -245,14 +265,14 @@ PURCHASE_LABEL: // jumps back here
 
         if (number_int > customers.size())
         { // if number is out of range
-            cout << "Customer is not found!" << endl;
+             std::cout << "Customer is not found!" <<  std::endl;
             goto PURCHASE_LABEL;
         }
         // customer counts as the index
         auto *customer = customers[number_int - 1];
         double sum = 0; // for every purch in purch/for every line of code purch is like index
-        cout << left << setw(16) << "Account Num" << left << setw(13) << "Item" << left << setw(15) << "Date" << left << setw(22) << "Amount" << endl;
-        cout << setfill ('-') << setw(66) << ""<< endl << setfill(' ');
+         std::cout <<  std::left <<  std::setw(16) << "Account Num" <<  std::left <<  std::setw(13) << "Item" <<  std::left <<  std::setw(15) << "Date" <<  std::left <<  std::setw(22) << "Amount" <<  std::endl;
+         std::cout << setfill ('-') <<  std::setw(66) << ""<<  std::endl << setfill(' ');
         for (auto *purchase : purchases)
         {
             if (purchase->getAccountNumber() == customer->getAccountNumber())
@@ -263,12 +283,12 @@ PURCHASE_LABEL: // jumps back here
             }
         }
 
-        cout << "\n" << customer->getFullName() << "'s total purchase is " << sum << endl;
+         std::cout << "\n" << customer->getFullName() << "'s total purchase is " << sum <<  std::endl;
 
     }
-    catch (std::exception e)
+    catch ( exception e)
     { // exception e-- stores the error. if there was an error with try, automatically goes to catch
-        cout << "Please enter a number! " << endl;
+         std::cout << "Please enter a number! " <<  std::endl;
         goto PURCHASE_LABEL; 
     }
 }
@@ -276,43 +296,43 @@ PURCHASE_LABEL: // jumps back here
 void Menu::addNewCustomer()
 {
     srand(time(NULL));
-    // when creating an account number...generate it to be a random string of numbers with a length of ten.
-    string data[7];
-    cout << "Enter customer's first name:\n";
-    cout << "add customer> ";
+    // when creating an account number...generate it to be a random  std::string of numbers with a length of ten.
+     std::string data[7];
+     std::cout << "Enter customer's first name:\n";
+     std::cout << "add customer> ";
 
-    getline(cin, data[0]);
+     std::getline(cin, data[0]);
     // create a new customer in vector of customers
 
-    cout << "Enter customer's last name:\n";
-    cout << "add customer> ";
+     std::cout << "Enter customer's last name:\n";
+     std::cout << "add customer> ";
 
-    getline(cin, data[1]);
+     std::getline(cin, data[1]);
 
-    cout << "Enter customer's address:\n";
-    cout << "add customer> ";
+     std::cout << "Enter customer's address:\n";
+     std::cout << "add customer> ";
 
-    getline(cin, data[2]);
+     std::getline(cin, data[2]);
 
-    cout << "Enter customer's city:\n";
-    cout << "add customer> ";
+     std::cout << "Enter customer's city:\n";
+     std::cout << "add customer> ";
 
-    getline(cin, data[3]);
+     std::getline(cin, data[3]);
 
-    cout << "Enter customer's state:\n";
-    cout << "add customer> ";
+     std::cout << "Enter customer's state:\n";
+     std::cout << "add customer> ";
 
-    getline(cin, data[4]);
+     std::getline(cin, data[4]);
 
 ZIPPY:
-    cout << "Enter customer's zip code:\n";
-    cout << "add customer> ";
+     std::cout << "Enter customer's zip code:\n";
+     std::cout << "add customer> ";
 
-    getline(cin, data[5]);
+     std::getline(cin, data[5]);
 
     if (data[5].size() != 5)
     {
-        cout << "Error: must be 5 digits!" << endl;
+         std::cout << "Error: must be 5 digits!" <<  std::endl;
         goto ZIPPY;
     }
 
@@ -320,22 +340,22 @@ ZIPPY:
     {
         if (c > '9' || c < '0')
         {
-            cout << "Error: must be 5 digits!" << endl;
+             std::cout << "Error: must be 5 digits!" <<  std::endl;
             goto ZIPPY;
         }
     }
 
 NUMMY:
-    cout << "Enter customer's phone number:\n";
-    cout << "add customer> ";
+     std::cout << "Enter customer's phone number:\n";
+     std::cout << "add customer> ";
 
-    getline(cin, data[6]);
+     std::getline(cin, data[6]);
 
     // set the name to name of custy, set account number random, streetName, city, state,
 
     if (data[6].size() != 10)
     {
-        cout << "Error: must be 10 digits!" << endl;
+         std::cout << "Error: must be 10 digits!" <<  std::endl;
         goto NUMMY;
     }
 
@@ -343,12 +363,12 @@ NUMMY:
     {
         if (c > '9' || c < '0')
         {
-            cout << "Error: must be 10 digits!" << endl;
+             std::cout << "Error: must be 10 digits!" <<  std::endl;
             goto NUMMY;
         }
     }
 
-    string accountNumber = "";
+     std::string accountNumber = "";
 
     for (int i = 0; i < 10; i++)
     {
@@ -362,10 +382,10 @@ NUMMY:
 
 void Menu::addNewCustomers()
 {
-    string input;
-    cout << "do you want to add another customer(y/n): ";
+     std::string input;
+     std::cout << "do you want to add another customer(y/n): ";
 
-    getline(cin, input);
+     std::getline(cin, input);
 
     if (input == "y")
     {
@@ -381,18 +401,18 @@ void Menu::addNewCustomers()
 void Menu::updateCustomerInfo()
 {
     int i = 1;
-    string number;
+     std::string number;
     // for a customer in customers
     for (auto *customer : customers)
     {
-        cout << i << ") " << customer->getFullName() << endl; // customer->getFullName ..ptr customer is getting the fullName
+         std::cout << i << ") " << customer->getFullName() <<  std::endl; // customer->getFullName ..ptr customer is getting the fullName
         i++;
     }
 UPDATE: // jumps back here
-    cout << "update customer> ";
+     std::cout << "update customer> ";
 
     cin.clear();
-    getline(cin, number);
+     std::getline(cin, number);
 
     try
     {
@@ -400,40 +420,40 @@ UPDATE: // jumps back here
 
         if (number_int > customers.size())
         { // if number is out of range
-            cout << "Customer is not found!" << endl;
+             std::cout << "Customer is not found!" <<  std::endl;
             goto UPDATE; 
         }
 
         auto *customer = customers[number_int - 1];
 
-        string data[7];
-        cout << "enter the new first name(enter k to keep the same)\n";
-        cout << "update customer> ";
-        getline(cin, data[0]);
+         std::string data[7];
+         std::cout << "enter the new first name(enter k to keep the same)\n";
+         std::cout << "update customer> ";
+         std::getline(cin, data[0]);
 
-        cout << "enter the new last name(enter k to keep the same)\n";
-        cout << "update customer> ";
-        getline(cin, data[1]);
+         std::cout << "enter the new last name(enter k to keep the same)\n";
+         std::cout << "update customer> ";
+         std::getline(cin, data[1]);
 
-        cout << "enter the new address(enter k to keep the same)\n";
-        cout << "update customer> ";
-        getline(cin, data[2]);
+         std::cout << "enter the new address(enter k to keep the same)\n";
+         std::cout << "update customer> ";
+         std::getline(cin, data[2]);
 
-        cout << "enter the city(enter k to keep the same)\n";
-        cout << "update customer> ";
-        getline(cin, data[3]);
+         std::cout << "enter the city(enter k to keep the same)\n";
+         std::cout << "update customer> ";
+         std::getline(cin, data[3]);
 
-        cout << "enter the state(enter k to keep the same)\n";
-        cout << "update customer> ";
-        getline(cin, data[4]);
+         std::cout << "enter the state(enter k to keep the same)\n";
+         std::cout << "update customer> ";
+         std::getline(cin, data[4]);
 
-        cout << "enter the zip code(enter k to keep the same)\n";
-        cout << "update customer> ";
-        getline(cin, data[5]);
+         std::cout << "enter the zip code(enter k to keep the same)\n";
+         std::cout << "update customer> ";
+         std::getline(cin, data[5]);
 
-        cout << "enter the phone number(enter k to keep the same)\n";
-        cout << "update customer> ";
-        getline(cin, data[6]);
+         std::cout << "enter the phone number(enter k to keep the same)\n";
+         std::cout << "update customer> ";
+         std::getline(cin, data[6]);
 
         if (data[0] != "k")
         {
@@ -470,9 +490,9 @@ UPDATE: // jumps back here
             customer->setPhoneNumber(data[6]);
         }
     }
-    catch (std::exception e)
+    catch ( exception e)
     { // exception e-- stores the error. if there was an error with try, automatically goes to catch
-        cout << "Please enter a number! " << endl;
+         std::cout << "Please enter a number! " <<  std::endl;
         goto UPDATE;
     }
 }
@@ -480,18 +500,18 @@ UPDATE: // jumps back here
 void Menu::deleteCustomerInfo()
 {
     int i = 1;
-    string number;
+     std::string number;
     // for a customer in customers
     for (auto *customer : customers)
     {
-        cout << i << ") " << customer->getFullName() << endl; // customer->getFullName ..ptr customer is getting the fullName
+         std::cout << i << ") " << customer->getFullName() <<  std::endl; // customer->getFullName ..ptr customer is getting the fullName
         i++;
     }
 DELETE_LABEL: // jumps back here
-    cout << "delete customer> ";
+     std::cout << "delete customer> ";
 
     cin.clear();
-    getline(cin, number);
+     std::getline(cin, number);
 
     try
     {
@@ -499,7 +519,7 @@ DELETE_LABEL: // jumps back here
 
         if (number_int > customers.size())
         { // if number is out of range
-            cout << "Customer is not found!" << endl;
+             std::cout << "Customer is not found!" <<  std::endl;
             goto DELETE_LABEL;
         }
 
@@ -507,11 +527,11 @@ DELETE_LABEL: // jumps back here
 
         delete customer;
         customers.erase(customers.begin() + number_int - 1);
-        cout << "customer deleted" << endl;
+         std::cout << "customer deleted" <<  std::endl;
     }
-    catch (std::exception e)
+    catch ( exception e)
     { // exception e-- stores the error. if there was an error with try, automatically goes to catch
-        cout << "Please enter a number! " << endl;
+         std::cout << "Please enter a number! " <<  std::endl;
         goto DELETE_LABEL;
     }
 }
@@ -519,18 +539,18 @@ DELETE_LABEL: // jumps back here
 void Menu::addNewPurchase()
 {
     int i = 1;
-    string number;
+     std::string number;
     // for a customer in customers
     for (auto *customer : customers)
     {
-        cout << i << ") " << customer->getFullName() << endl; // customer->getFullName ..ptr customer is getting the fullName
+         std::cout << i << ") " << customer->getFullName() <<  std::endl; // customer->getFullName ..ptr customer is getting the fullName
         i++;
     }
 NEW_PURCHASE_LABEL: // jumps back here
-    cout << "new purchase> ";
+     std::cout << "new purchase> ";
 
     cin.clear();
-    getline(cin, number);
+     std::getline(cin, number);
 
     try
     {
@@ -538,77 +558,77 @@ NEW_PURCHASE_LABEL: // jumps back here
 
         if (number_int > customers.size())
         { // if number is out of range
-            cout << "Customer is not found!" << endl;
+             std::cout << "Customer is not found!" <<  std::endl;
             goto NEW_PURCHASE_LABEL;
         }
 
         auto *customer = customers[number_int - 1];
 
-        string data[3];
-        cout << "Enter purchase item name:\n";
-        cout << "item name> ";
+         std::string data[3];
+         std::cout << "Enter purchase item name:\n";
+         std::cout << "item name> ";
 
-        getline(cin, data[0]);
+         std::getline(cin, data[0]);
 
-        cout << "Enter purchase date:\n";
-        cout << "purchase date> ";
+         std::cout << "Enter purchase date:\n";
+         std::cout << "purchase date> ";
 
-        getline(cin, data[1]);
+         std::getline(cin, data[1]);
 
-        cout << "Enter purchase price:\n";
-        cout << "purchase price> ";
+         std::cout << "Enter purchase price:\n";
+         std::cout << "purchase price> ";
 
-        getline(cin, data[2]);
+         std::getline(cin, data[2]);
 
         Purchase *newPurchase = new Purchase(customer->getAccountNumber(), data[0], data[1], data[2]);
         purchases.push_back(newPurchase);
     }
-    catch (std::exception e)
+    catch ( exception e)
     { // exception e-- stores the error. if there was an error with try, automatically goes to catch
-        cout << "Please enter a number! " << endl;
+         std::cout << "Please enter a number! " <<  std::endl;
         goto NEW_PURCHASE_LABEL;
     }
 }
 
 void Menu::save() {
-    ofstream customerOutputFile("customerData.txt");
-    ofstream purchaseOutputFile("purchaseData.txt");
+     std::ofstream customerOutputFile("customerData.txt");
+     std::ofstream purchaseOutputFile("purchaseData.txt");
 
     for (auto* customer : customers) {
-        customerOutputFile << customer->getFirstName() << " " << customer->getLastName() << " " << customer->getAccountNumber() << " " << customer->getAddress() << " " << customer->getCity() << " " << customer->getState() << " " << customer->getZipCode() << " " << customer->getPhoneNumber() << endl;
+        customerOutputFile << customer->getFirstName() << " " << customer->getLastName() << " " << customer->getAccountNumber() << " " << customer->getAddress() << " " << customer->getCity() << " " << customer->getState() << " " << customer->getZipCode() << " " << customer->getPhoneNumber() <<  std::endl;
     }
 
     for (auto* purchase : purchases) {
-        purchaseOutputFile << purchase->getAccountNumber() << " " << purchase->getItem() << " " << purchase->getDate() << " " << purchase->getAmount() << endl;
+        purchaseOutputFile << purchase->getAccountNumber() << " " << purchase->getItem() << " " << purchase->getDate() << " " << purchase->getAmount() <<  std::endl;
     }
 }
 
 void Menu::export_data() {
-    string custy, purchy;
-    cout << "Enter the name of the customer data file: " << endl;
-    getline(cin, custy);
+     std::string custy, purchy;
+     std::cout << "Enter the name of the customer data file: " <<  std::endl;
+     std::getline(cin, custy);
 
-    cout << "Enter the name of the purchase data file: " << endl;
-    getline(cin, purchy);
+     std::cout << "Enter the name of the purchase data file: " <<  std::endl;
+     std::getline(cin, purchy);
 
-    ofstream customerOutputFile(custy);
-    ofstream purchaseOutputFile(purchy);
+     std::ofstream customerOutputFile(custy);
+     std::ofstream purchaseOutputFile(purchy);
 
     for (auto* customer : customers) {
-        customerOutputFile << customer->getFirstName() << " " << customer->getLastName() << " " << customer->getAccountNumber() << " " << customer->getAddress() << " " << customer->getCity() << " " << customer->getState() << " " << customer->getZipCode() << " " << customer->getPhoneNumber() << endl;
+        customerOutputFile << customer->getFirstName() << " " << customer->getLastName() << " " << customer->getAccountNumber() << " " << customer->getAddress() << " " << customer->getCity() << " " << customer->getState() << " " << customer->getZipCode() << " " << customer->getPhoneNumber() <<  std::endl;
     }
 
     for (auto* purchase : purchases) {
-        purchaseOutputFile << purchase->getAccountNumber() << " " << purchase->getItem() << " " << purchase->getDate() << " " << purchase->getAmount() << endl;
+        purchaseOutputFile << purchase->getAccountNumber() << " " << purchase->getItem() << " " << purchase->getDate() << " " << purchase->getAmount() <<  std::endl;
     }
 }
 
 void Menu::addNewPurchases()
 {
-    string input;
-    cout << "do you want to add another purchase(y/n): ";
+     std::string input;
+     std::cout << "do you want to add another purchase(y/n): ";
 
-    getline(cin, input);
+     std::getline(cin, input);
 
     if (input == "y")
     {
@@ -668,8 +688,8 @@ void Menu::execute(int option)
         export_data();
         break;
     case 15:
-        cout << "Thank you for visiting Blossom Botique! We hope to see you again!\n";
-        cout << R"(                    _
+         std::cout << "Thank you for visiting Blossom Botique! We hope to see you again!\n";
+         std::cout << R"(                    _
                   _(_)_                          wWWWw   _
       @@@@       (_)@(_)   vVVVv     _     @@@@  (___) _(_)_
      @@()@@ wWWWw  (_)\    (___)   _(_)_  @@()@@   Y  (_)@(_)
@@ -678,12 +698,12 @@ void Menu::execute(int option)
     \ |     \ |/       | / \ | /  \|/       |/    \|      \|/
     \\|//   \\|///  \\\|//\\\|/// \|///  \\\|//  \\|//  \\\|// 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-)" << endl;
+)" <<  std::endl;
         exit(0);
         break;
     
 
     default:
-        cout << "Invalid option!" << endl;
+         std::cout << "Invalid option!" <<  std::endl;
     }
 }

@@ -88,12 +88,12 @@ Customer::Customer(string name, string lastName, string accountNum, string addy,
 string Customer::change(string toChange) {
     string newString;
     for (int i = 0; i < toChange.size(); i++) {
-        if (toChange[i] <= 'Z' && toChange[i] >= 'A' && i > 0 && toChange[i-1] <= '9' && toChange[i-1] >= '0') {
-            newString += (" " + toChange[i]);
-        } else if (toChange[i] <= 'Z' && toChange[i] >= 'A' && i > 0 && toChange[i-1] <= 'z' && toChange[i-1] >= 'a') {
-            newString += (" " + toChange[i]);
-        } else if(toChange[i] <= 'Z' && toChange[i] >= 'A' && i > 0 && toChange[i-1] <= 'Z' && toChange[i-1] >= 'A') {
-            newString += (" " + toChange[i]);
+        if (isupper(toChange[i]) && i > 0 && isdigit(toChange[i-1])) {
+            newString += " ";
+            newString += toChange[i];
+        } else if (isupper(toChange[i]) && i > 0 && islower(toChange[i-1])) {
+            newString += " ";
+            newString += toChange[i];
         }
         else {
             newString += toChange[i];
@@ -103,5 +103,5 @@ string Customer::change(string toChange) {
 }
 
 void Customer::print() {
-    cout <<  setw(12) << customerData.name << left << setw(13) << customerData.lastName << left << setw(15) << customerData.accountNum << left << setw(22) << customerData.addy << left << setw(20) << customerData.city << left << setw(14) << customerData.state << left << setw(15) << customerData.zipCode << left << setw(12) << customerData.phoneNum << endl;
+    cout <<  setw(12) << customerData.name << left << setw(13) << customerData.lastName << left << setw(15) << customerData.accountNum << left << setw(22) << change(customerData.addy) << left << setw(20) << change(customerData.city) << left << setw(14) << change(customerData.state) << left << setw(15) << customerData.zipCode << left << setw(12) << customerData.phoneNum << endl;
 }
