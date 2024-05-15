@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <cstdlib>
 #include <ctime>
+#include <iomanip>
 using namespace std;
 
 void Menu::printMenu()
@@ -17,7 +18,7 @@ void Menu::printMenu()
          << "|\t\t\t\t\t\t\t\t\t\t\t\t|" << endl;
     cout << "|\t\tPlease Select a Number corresponding with one of the following options:\t\t|\n"
          << "|\t\t\t\t\t\t\t\t\t\t\t\t|" << endl;
-    cout << "|   \t            1. Print menu" << "\t\t\t\t\t\t\t\t\t|" <<endl;
+    cout << "|   \t            1. Print menu" << "\t\t\t\t\t\t\t\t|" <<endl;
     cout << "|   \t            2. Print all Customers"
          << "\t\t\t\t\t\t\t|" << endl;
     cout << "|   \t	    3. Print Customer list in DESCENDING order\t\t\t\t\t|\n";
@@ -29,11 +30,12 @@ void Menu::printMenu()
     cout << "|   \t	    8. Add multiple Customers\t\t\t\t\t\t\t|\n";
     cout << "|   \t	    9. Update select Customer's information\t\t\t\t\t|\n";
 
-    cout << "|   \t	    10. Delete select Customer's account information\t\t\t\t|\n";
+    cout << "|   \t	   10. Delete select Customer's account information\t\t\t\t|\n";
     cout << "|   \t	   11. Add new Customer's purchase\t\t\t\t\t\t|\n";
     cout << "|   \t	   12. Add multiple new Customer purchases\t\t\t\t\t|\n";
-    cout << "|   \t	   13. Save new data\t\t\t\t\t\t\t\t|\n";
-    cout << "|   \t	   14. Export to new file\t\t\t\t\t\t\t|\n"
+    cout << "|   \t	   13. Save new data\t\t\t\t\t\t\t\t|\n"; //create outfile, overwrite what you wrote cout (to outfile) make sure to call the function --use the same file you wrote in 
+    cout << "|   \t	   14. Export to new file\t\t\t\t\t\t\t|\n"; //create outfile, exporting to secondary file--make sure to do both files(must do it twice) (make function do both to both files, from within output function you want it to print it)
+    cout << "|   \t	   15. exit\t\t\t\t\t\t\t\t\t|\n" //create outfile, exporting to secondary file--make sure to do both files(must do it twice) (make function do both to both files, from within output function you want it to print it)
          << "|\t\t\t\t\t\t\t\t\t\t\t\t|" << endl;
     cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 }
@@ -45,6 +47,13 @@ void Menu::run()
 
     while (1 + 1 == 2)
     {
+        if (option != "") {
+            cout << "Would you like to print the menu? (Y/n): ";
+            getline(cin, option);
+            if (option == "Y") {
+                printMenu();
+            }
+        }
     LABEL:
         cout << "main menu> ";
         cin.clear(); //
@@ -134,10 +143,33 @@ Menu::Menu()
 
 void Menu::printCustomers()
 { // print list of all customers --calls print for every index of vector
+    cout << left << setw(12) << "First Name" << left << setw(13) << "Last Name" << left << setw(15) << "Account Num" << left << setw(22) << "Address" << left << setw(20) << "City" <<  left <<setw(14) << "State" << left << setw(15) << "Zip Code" << left << setw(12) << "Phone Num" << endl;
+    cout << setfill ('-') << setw (123) << ""<< endl << setfill(' ');
     for (Customer *customer : customers)
     { // for each customer IN customers -> for each loop ..for every index in customers u make ptr var/object customer that accesses anything within the index--every index is ptr to object(can access vars, methods, anything w -> syntax)
         customer->print();
+        cout << "\n\t";
+        cout << "Purchases for: " << customer->getFullName() << endl;
+        cout << "\t";
+        cout << left << setw(16) << "Account Num" << left << setw(13) << "Item" << left << setw(15) << "Date" << left << setw(22) << "Amount" << endl;
+        cout << "\t";
+        cout << setfill ('-') << setw(66) << ""<< endl << setfill(' ');
+        printPurchases(customer->getAccountNumber());
         cout << "\n\n";
+    }
+} // PRINT ALL PURCHASE INFORMATION IN COLUMN FORMAT HERE: 
+/*
+idea: change the initial cout statement: add a header for purchase: << purchase item << date << 
+ use a purchase.cpp function called printPurchase() that will get each purchase for each customer, and print it 
+use this within the for loop somehow
+*/
+
+void Menu::printPurchases(string accountNumber) {
+    for(auto* purchase : purchases) {
+        if (purchase->getAccountNumber() == accountNumber) {
+            cout << "\t";
+            purchase->print();
+        }
     }
 }
 
@@ -166,7 +198,7 @@ void Menu::printCustomerInfo()
         cout << i << ") " << customer->getFullName() << endl; // customer->getFullName ..ptr customer is getting the fullName
         i++;
     }
-LABEL: // jumps back here
+CUSTOMERINFO_LABEL: // jumps back here
     cout << "customer info> ";
 
     cin.clear();
@@ -179,7 +211,7 @@ LABEL: // jumps back here
         if (number_int > customers.size())
         { // if number is out of range
             cout << "Customer is not found!" << endl;
-            goto LABEL;
+            goto CUSTOMERINFO_LABEL;
         }
 
         customers[number_int - 1]->print(); // prints actual values at # user inputted vector stores at index 0, so use-1.
@@ -187,7 +219,7 @@ LABEL: // jumps back here
     catch (std::exception e)
     { // exception e-- stores the error. if there was an error with try, automatically goes to catch
         cout << "Please enter a number! " << endl;
-        goto LABEL;
+        goto CUSTOMERINFO_LABEL;
     }
 }
 
@@ -201,7 +233,7 @@ void Menu::printCustomerTotal()
         cout << i << ") " << customer->getFullName() << endl; // customer->getFullName ..ptr customer is getting the fullName
         i++;
     }
-LABEL: // jumps back here
+PURCHASE_LABEL: // jumps back here
     cout << "purchase info> ";
 
     cin.clear();
@@ -214,28 +246,30 @@ LABEL: // jumps back here
         if (number_int > customers.size())
         { // if number is out of range
             cout << "Customer is not found!" << endl;
-            goto LABEL;
+            goto PURCHASE_LABEL;
         }
         // customer counts as the index
         auto *customer = customers[number_int - 1];
         double sum = 0; // for every purch in purch/for every line of code purch is like index
+        cout << left << setw(16) << "Account Num" << left << setw(13) << "Item" << left << setw(15) << "Date" << left << setw(22) << "Amount" << endl;
+        cout << setfill ('-') << setw(66) << ""<< endl << setfill(' ');
         for (auto *purchase : purchases)
         {
             if (purchase->getAccountNumber() == customer->getAccountNumber())
             {
                 auto amount = purchase->getAmount();
-                cout << amount << endl;
-                cout << stod(amount) << endl;
+                purchase->print();
                 sum += stod(amount);
             }
         }
 
-        cout << customer->getFullName() << "'s total purchase is " << sum << endl;
+        cout << "\n" << customer->getFullName() << "'s total purchase is " << sum << endl;
+
     }
     catch (std::exception e)
     { // exception e-- stores the error. if there was an error with try, automatically goes to catch
         cout << "Please enter a number! " << endl;
-        goto LABEL;
+        goto PURCHASE_LABEL; 
     }
 }
 
@@ -354,7 +388,7 @@ void Menu::updateCustomerInfo()
         cout << i << ") " << customer->getFullName() << endl; // customer->getFullName ..ptr customer is getting the fullName
         i++;
     }
-LABEL: // jumps back here
+UPDATE: // jumps back here
     cout << "update customer> ";
 
     cin.clear();
@@ -367,7 +401,7 @@ LABEL: // jumps back here
         if (number_int > customers.size())
         { // if number is out of range
             cout << "Customer is not found!" << endl;
-            goto LABEL;
+            goto UPDATE; 
         }
 
         auto *customer = customers[number_int - 1];
@@ -439,7 +473,7 @@ LABEL: // jumps back here
     catch (std::exception e)
     { // exception e-- stores the error. if there was an error with try, automatically goes to catch
         cout << "Please enter a number! " << endl;
-        goto LABEL;
+        goto UPDATE;
     }
 }
 
@@ -453,7 +487,7 @@ void Menu::deleteCustomerInfo()
         cout << i << ") " << customer->getFullName() << endl; // customer->getFullName ..ptr customer is getting the fullName
         i++;
     }
-LABEL: // jumps back here
+DELETE_LABEL: // jumps back here
     cout << "delete customer> ";
 
     cin.clear();
@@ -466,7 +500,7 @@ LABEL: // jumps back here
         if (number_int > customers.size())
         { // if number is out of range
             cout << "Customer is not found!" << endl;
-            goto LABEL;
+            goto DELETE_LABEL;
         }
 
         auto *customer = customers[number_int - 1];
@@ -478,7 +512,7 @@ LABEL: // jumps back here
     catch (std::exception e)
     { // exception e-- stores the error. if there was an error with try, automatically goes to catch
         cout << "Please enter a number! " << endl;
-        goto LABEL;
+        goto DELETE_LABEL;
     }
 }
 
@@ -492,7 +526,7 @@ void Menu::addNewPurchase()
         cout << i << ") " << customer->getFullName() << endl; // customer->getFullName ..ptr customer is getting the fullName
         i++;
     }
-LABEL: // jumps back here
+NEW_PURCHASE_LABEL: // jumps back here
     cout << "new purchase> ";
 
     cin.clear();
@@ -505,24 +539,24 @@ LABEL: // jumps back here
         if (number_int > customers.size())
         { // if number is out of range
             cout << "Customer is not found!" << endl;
-            goto LABEL;
+            goto NEW_PURCHASE_LABEL;
         }
 
         auto *customer = customers[number_int - 1];
 
-        string data[2];
+        string data[3];
         cout << "Enter purchase item name:\n";
-        cout << "add purchase> ";
+        cout << "item name> ";
 
         getline(cin, data[0]);
 
         cout << "Enter purchase date:\n";
-        cout << "add customer> ";
+        cout << "purchase date> ";
 
         getline(cin, data[1]);
 
         cout << "Enter purchase price:\n";
-        cout << "add customer> ";
+        cout << "purchase price> ";
 
         getline(cin, data[2]);
 
@@ -532,7 +566,40 @@ LABEL: // jumps back here
     catch (std::exception e)
     { // exception e-- stores the error. if there was an error with try, automatically goes to catch
         cout << "Please enter a number! " << endl;
-        goto LABEL;
+        goto NEW_PURCHASE_LABEL;
+    }
+}
+
+void Menu::save() {
+    ofstream customerOutputFile("customerData.txt");
+    ofstream purchaseOutputFile("purchaseData.txt");
+
+    for (auto* customer : customers) {
+        customerOutputFile << customer->getFirstName() << " " << customer->getLastName() << " " << customer->getAccountNumber() << " " << customer->getAddress() << " " << customer->getCity() << " " << customer->getState() << " " << customer->getZipCode() << " " << customer->getPhoneNumber() << endl;
+    }
+
+    for (auto* purchase : purchases) {
+        purchaseOutputFile << purchase->getAccountNumber() << " " << purchase->getItem() << " " << purchase->getDate() << " " << purchase->getAmount() << endl;
+    }
+}
+
+void Menu::export_data() {
+    string custy, purchy;
+    cout << "Enter the name of the customer data file: " << endl;
+    getline(cin, custy);
+
+    cout << "Enter the name of the purchase data file: " << endl;
+    getline(cin, purchy);
+
+    ofstream customerOutputFile(custy);
+    ofstream purchaseOutputFile(purchy);
+
+    for (auto* customer : customers) {
+        customerOutputFile << customer->getFirstName() << " " << customer->getLastName() << " " << customer->getAccountNumber() << " " << customer->getAddress() << " " << customer->getCity() << " " << customer->getState() << " " << customer->getZipCode() << " " << customer->getPhoneNumber() << endl;
+    }
+
+    for (auto* purchase : purchases) {
+        purchaseOutputFile << purchase->getAccountNumber() << " " << purchase->getItem() << " " << purchase->getDate() << " " << purchase->getAmount() << endl;
     }
 }
 
@@ -595,11 +662,26 @@ void Menu::execute(int option)
         addNewPurchases();
         break;
     case 13:
-        // save();
+        save();
         break;
     case 14:
-        // export();
+        export_data();
         break;
+    case 15:
+        cout << "Thank you for visiting Blossom Botique! We hope to see you again!\n";
+        cout << R"(                    _
+                  _(_)_                          wWWWw   _
+      @@@@       (_)@(_)   vVVVv     _     @@@@  (___) _(_)_
+     @@()@@ wWWWw  (_)\    (___)   _(_)_  @@()@@   Y  (_)@(_)
+      @@@@  (___)     `|/    Y    (_)@(_)  @@@@   \|/   (_)\
+       /      Y       \|    \|/    /(_)    \|      |/      |
+    \ |     \ |/       | / \ | /  \|/       |/    \|      \|/
+    \\|//   \\|///  \\\|//\\\|/// \|///  \\\|//  \\|//  \\\|// 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+)" << endl;
+        exit(0);
+        break;
+    
 
     default:
         cout << "Invalid option!" << endl;

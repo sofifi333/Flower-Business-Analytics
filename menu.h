@@ -11,6 +11,9 @@ public:
     void run();
     void printMenu();
     void execute(int);
+    void save();
+    void export_data();
+    void printPurchases(string);
 
     void printCustomers();
     void printDescendingList();

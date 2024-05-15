@@ -1,6 +1,7 @@
 #include "purchase.h"
 #include <string>
 #include <iostream>
+#include <iomanip>
 
 using namespace std;
 
@@ -20,8 +21,13 @@ std::string Purchase::getAccountNumber() const {
 }
 
 void Purchase::print() const {
-    cout << "account number: " << purchaseData.accountNumber << endl;
-    cout << "amount: " << purchaseData.amount << endl;
-    cout << "date: " << purchaseData.date << endl;
-    cout << "item: " << purchaseData.item << endl;
+    cout << left << setw(16) << purchaseData.accountNumber << left << setw(13) << purchaseData.item << left << setw(15) << purchaseData.date << left << setw(22) << purchaseData.amount << endl;
+}
+
+
+std::string Purchase::getItem() const {
+    return purchaseData.item;
+}
+std::string Purchase::getDate() const {
+    return purchaseData.date;
 }

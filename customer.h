@@ -8,6 +8,8 @@ class Customer { //customerData vars +  input data or read data
 public:
         Customer(string name, string lastName, string accountNum, string addy, string city, string state, string zipCode, string phoneNum);
         void print();
+        string change(string);
+        // void parseCategory();
 
         string getFullName() const;
         string getFirstName() const;
