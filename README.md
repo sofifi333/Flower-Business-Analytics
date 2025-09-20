@@ -1,7 +1,7 @@
 # Flower Business Analytics  
 
 ## Overview  
-A **C++ menu-driven application** for managing a flower database using **object-oriented programming, data structures, and file handling**. The system supports adding, searching, editing, and exporting flower records stored across multiple text files.  
+A **C++ menu-driven application** for managing a flower database using object-oriented programming, data structures, and file handling. The system supports adding, searching, editing, and exporting flower records stored across multiple text files.  
 
 ## Features  
 - **OOP Design** – clean, modular classes for scalability  
